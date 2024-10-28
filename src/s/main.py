@@ -157,6 +157,9 @@ class SouvenirMachine(QWidget):
     def depositMoney(self):
         try:
             amount = int(self.moneyInput.text())
+            if amount <= 0:
+                raise ValueError()
+
             self.balance += amount
             self.updateBalance()
             self.moneyInput.clear()
